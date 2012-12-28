@@ -6,7 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import java.io.IOException;
 
-@WebServlet(name = "simpleasync", value = "/simpleasync", asyncSupported = true)
+@WebServlet(name = "simpleasync", loadOnStartup = 1, value = "/simpleasync", asyncSupported = true)
 public class SimpleAsyncServlet extends HttpServlet {
 
     @Override
