@@ -6,14 +6,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import java.io.IOException;
 
-@WebServlet(name = "simpleasync", loadOnStartup = 1, value = "/simpleasync", asyncSupported = true)
+@WebServlet(name = "simpleasync", urlPatterns = {"/simpleasync"}, asyncSupported = true)
 public class SimpleAsyncServlet extends HttpServlet {
 
     @Override
     public void service(ServletRequest req, ServletResponse res)
         throws ServletException, IOException {
 
-        final AsyncContext ctx = req.getAsyncContext();
+        final AsyncContext ctx = req.startAsync();
         ctx.setTimeout(30000L);
         ctx.addListener(new AsyncListener() {
             public void onComplete(AsyncEvent event) throws IOException {
